@@ -48,9 +48,6 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="FiftyOne.Foundation">
-      <HintPath>..\packages\51Degrees.mobi.1.0.2.2\lib\NET40\FiftyOne.Foundation.dll</HintPath>
-    </Reference>
     <Reference Include="OpenSearchToolkit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenSearchToolkit.1.1\lib\OpenSearchToolkit.dll</HintPath>
     </Reference>
@@ -119,6 +116,13 @@
     <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Helpers\TwitterConsumer.cs" />
     <Compile Include="Helpers\UrlHelperExtensions.cs" />
+    <Compile Include="Mobile\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mobile\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Dinner.cs" />
     <Compile Include="Models\DinnerRepository.cs" />
@@ -147,6 +151,7 @@
     <Content Include="App_Data\aspnetdb_log.LDF">
       <DependentUpon>ASPNETDB.MDF</DependentUpon>
     </Content>
+    <Content Include="App_Data\FiftyOne.Foundation.dll" />
     <Content Include="App_Data\NerdDinner.mdf" />
     <Content Include="App_Data\NerdDinner_log.ldf">
       <DependentUpon>NerdDinner.mdf</DependentUpon>
@@ -300,6 +305,7 @@
     <Content Include="lib\DDay.iCal-License.txt" />
     <Content Include="lib\DDay.iCal.dll" />
     <Content Include="Logs\readme.txt" />
+    <Content Include="Mobile\Default.aspx" />
     <Content Include="Scripts\date.format.js" />
     <Content Include="Scripts\geo-polyfill.js" />
     <Content Include="Scripts\geo.js" />
