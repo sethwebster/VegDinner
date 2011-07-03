@@ -29,23 +29,38 @@ namespace System.Web.Mvc
         public static string AbsoluteAction(this UrlHelper url, string action, object routeValues)
         {
             Uri requestUrl = url.RequestContext.HttpContext.Request.Url;
-
+#if DEBUG
             string absoluteAction = string.Format("{0}://{1}{2}",
                                                   requestUrl.Scheme,
                                                   requestUrl.Authority,
                                                   url.Action(action, routeValues));
+#else
+            string absoluteAction = string.Format("{0}://{1}{2}",
+                                      requestUrl.Scheme,
+                                      requestUrl.Host,
+                                      url.Action(action, routeValues));
+
+#endif
 
             return absoluteAction;
         }
         public static string AbsoluteAction(this UrlHelper url, string scheme, string action, object routeValues)
         {
             Uri requestUrl = url.RequestContext.HttpContext.Request.Url;
-
+#if DEBUG
             string absoluteAction = string.Format("{0}://{1}{2}",
                                                   scheme,
                                                   requestUrl.Authority,
                                                   url.Action(action, routeValues));
 
+#else
+            string absoluteAction = string.Format("{0}://{1}{2}",
+                                                  scheme,
+                                                  requestUrl.Host,
+                                                  url.Action(action, routeValues));
+
+#endif
+           
             return absoluteAction;
         }
     }
