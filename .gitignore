@@ -1,4 +1,3 @@
-
 #ignore thumbnails created by windows
 Thumbs.db
 #Ignore files build by Visual Studio
@@ -27,7 +26,6 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
-[Ll]ogs*/*
+Logs*/*
 NerdDinner/App_Data/NerdDinner.ldf
-NerdDinner/App_Data/NerdDinner.mdf
 NerdDinner/App_Data/NerdDinner.mdf
