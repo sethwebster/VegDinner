@@ -29,3 +29,6 @@ _ReSharper*/
 Logs*/*
 NerdDinner/App_Data/NerdDinner.ldf
 NerdDinner/App_Data/NerdDinner.mdf
+NerdDinner/Logs/*
+NerdDinner.sln.docstates
+NerdDinner/App_Data/Log.txt
