@@ -142,10 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="apple-touch-icon.png" />
-    <Content Include="App_Data\ASPNETDB.MDF" />
-    <Content Include="App_Data\aspnetdb_log.LDF">
-      <DependentUpon>ASPNETDB.MDF</DependentUpon>
-    </Content>
     <Content Include="App_Data\NerdDinner.mdf" />
     <Content Include="App_Data\NerdDinner_log.ldf">
       <DependentUpon>NerdDinner.mdf</DependentUpon>
