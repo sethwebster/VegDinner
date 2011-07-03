@@ -57,7 +57,7 @@ namespace NerdDinner
         void Application_Start()
         {
             RegisterRoutes(RouteTable.Routes);
-
+            RegisterGlobalFilters(GlobalFilters.Filters);
             ViewEngines.Engines.Clear();
             //ViewEngines.Engines.AddIPhone<WebFormViewEngine>();
             //ViewEngines.Engines.AddGenericMobile<WebFormViewEngine>();
