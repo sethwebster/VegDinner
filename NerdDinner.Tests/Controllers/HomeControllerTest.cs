@@ -1,24 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NerdDinner;
 using NerdDinner.Controllers;
+using NerdDinner.Tests.Mocks;
 
 namespace NerdDinner.Tests.Controllers {
     [TestClass]
     public class HomeControllerTest {
         [TestMethod]
         public void Index() {
-            // Arrange
-            HomeController controller = new HomeController();
+			// Arrange
+			HttpContextBase httpContext = MvcMockHelpers.FakeHttpContext();
+			HomeController controller = new HomeController();
+			RequestContext requestContext = new RequestContext(httpContext, new RouteData());
 
-            // Act
-            ViewResult result = controller.Index() as ViewResult;
+			controller.ControllerContext = new ControllerContext(requestContext, controller);
+			controller.Url = new UrlHelper(requestContext);
 
-            // Assert
+			// Act
+			ViewResult result = controller.Index() as ViewResult;
+
+			// Assert
+			Assert.IsNotNull(result);
         }
 
         [TestMethod]

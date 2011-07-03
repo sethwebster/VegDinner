@@ -31,8 +31,9 @@ namespace NerdDinner.Services
                            {
                                Lat = (float)x.Element("lat"),
                                Long = (float)x.Element("lng")
-                       }).First();
-
+                       })
+                       .First();
+            //TODO: Bug here....check for First/Null
             return ll;
         }
 
@@ -44,7 +45,9 @@ namespace NerdDinner.Services
                 //return string.Empty;
             }
 
-            string url = "http://ipinfodb.com/ip_query.php?ip={0}&timezone=false";
+            string apiKey = System.Configuration.ConfigurationManager.AppSettings["ipInfoDbKey"];
+            string url = "http://api.ipinfodb.com/v3/ip-city/?ip={0}&key=" + apiKey;
+            //string url = "http://ipinfodb.com/ip_query.php?ip={0}&timezone=false";
             url = String.Format(url, ip);
 
             var result = XDocument.Load(url);

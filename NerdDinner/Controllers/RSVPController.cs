@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Web.Mvc;
 using DotNetOpenAuth.Messaging;
 using DotNetOpenAuth.OpenId;
@@ -35,7 +36,7 @@ namespace NerdDinner.Controllers
         [Authorize, HttpPost]
         public ActionResult Register(int id) {
 
-            Dinner dinner = dinnerRepository.GetDinner(id);
+            Dinner dinner = dinnerRepository.Find(id);
 
             if (!dinner.IsUserRegistered(User.Identity.Name)) {
 
@@ -49,6 +50,29 @@ namespace NerdDinner.Controllers
             }
 
             return Content("Thanks - we'll see you there!");
+        }
+
+        //
+        // AJAX: /RSVP/Cancel/1
+
+        [Authorize, HttpPost]
+        public ActionResult Cancel(int id)
+        {
+
+            Dinner dinner = dinnerRepository.Find(id);
+
+            RSVP rsvp = dinner.RSVPs
+                .Where(r => User.Identity.Name == (r.AttendeeNameId ?? r.AttendeeName))
+                .SingleOrDefault();
+
+            if (rsvp != null)
+            {
+
+                dinnerRepository.DeleteRsvp(rsvp);
+                dinnerRepository.Save();
+            }
+
+            return Content("Sorry you can't make it!");
         }
 
         //
@@ -80,7 +104,7 @@ namespace NerdDinner.Controllers
             {
                 var dinnerRepository = new DinnerRepository();
                 int id = int.Parse(response.GetUntrustedCallbackArgument("DinnerId"));
-                Dinner dinner = dinnerRepository.GetDinner(id);
+                Dinner dinner = dinnerRepository.Find(id);
 
                 // The alias we're getting here is NOT a secure identifier, but a friendly one,
                 // which is all we need for this scenario.
@@ -124,7 +148,7 @@ namespace NerdDinner.Controllers
             if (TwitterConsumer.TryFinishSignInWithTwitter(out screenName, out userId))
             {
                 var dinnerRepository = new DinnerRepository();
-                Dinner dinner = dinnerRepository.GetDinner(id);
+                Dinner dinner = dinnerRepository.Find(id);
 
                 // NOTE: The alias we've generated for this user isn't guaranteed to be unique.
                 string alias = "@" + screenName;

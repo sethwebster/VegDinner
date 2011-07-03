@@ -4,6 +4,7 @@ NerdDinner.MapDivId = 'theMap';
 NerdDinner._map = null;
 NerdDinner._points = [];
 NerdDinner._shapes = [];
+NerdDinner.ipInfoDbKey = '';
 
 NerdDinner.LoadMap = function (latitude, longitude, onMapLoaded) {
     NerdDinner._map = new VEMap(NerdDinner.MapDivId);
@@ -26,7 +27,9 @@ NerdDinner.LoadMap = function (latitude, longitude, onMapLoaded) {
 }
 
 NerdDinner.ClearMap = function () {
-    NerdDinner._map.Clear();
+    if (NerdDinner._map != null) {
+        NerdDinner._map.Clear();
+    }
     NerdDinner._points = [];
     NerdDinner._shapes = [];
 }
@@ -196,8 +199,9 @@ NerdDinner.onMouseUp = function (e) {
         $("#Latitude").val(LatLong.Latitude.toString());
         $("#Longitude").val(LatLong.Longitude.toString());
         NerdDinner.dragShape = null;
-        
-        NerdDinner._map.FindLocations(LatLong, NerdDinner.getLocationResults);
+
+        //OPTIONAL: If you want, go find the address under this pin...        
+        //NerdDinner._map.FindLocations(LatLong, NerdDinner.getLocationResults);
     }
 }
 
@@ -214,12 +218,34 @@ NerdDinner.onMouseMove = function (e) {
 
 NerdDinner.getLocationResults = function (locations) {
     if (locations) {
-        var currentAddress = $("#Dinner_Address").val();
+        var currentAddress = $("#Address");
         if (locations[0].Name != currentAddress) {
-            var answer = confirm("Bing Maps returned the address '" + locations[0].Name + "' for the pin location. Click 'OK' to use this address for the event, or 'Cancel' to use the current address of '" + currentAddress + "'");
+            var answer = confirm("Bing Maps returned the address '" + locations[0].Name + "' for the pin location. Click 'OK' to use this address for the event, or 'Cancel' to use the current address of '" + currentAddress.val() + "'");
             if (answer) {
-                $("#Dinner_Address").val(locations[0].Name);
+                currentAddress.val(locations[0].Name);
             }
         }
     }
+}
+
+NerdDinner.getCurrentLocationByIpAddress = function () {
+    var requestUrl = "http://api.ipinfodb.com/v3/ip-city/?format=json&callback=?&key=" + this.ipInfoDbKey;
+
+    $.getJSON(requestUrl,
+        function (data) {
+            if (data.RegionName != '') {
+                $get('Location').value = data.regionName + ', ' + data.countryName;
+            }
+        });
+}
+
+NerdDinner.getCurrentLocationByLatLong = function (latitude, longitude) {
+    NerdDinner._map.FindLocations(new VELatLong(latitude, longitude), function (locations) {
+        if (locations) {
+            for (var i = 0; i < locations.length; i++) {
+                $get('Location').value += locations[i].Name;
+                break;
+            }
+        }
+    });
 }

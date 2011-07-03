@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NerdDinner.Helpers;
 using NerdDinner.Models;
+using PagedList;
 
 namespace NerdDinner.Controllers {
 
@@ -11,6 +13,8 @@ namespace NerdDinner.Controllers {
     public class DinnersController : Controller {
 
         IDinnerRepository dinnerRepository;
+
+        private const int PageSize = 25;
 
         //
         // Dependency Injection enabled constructors
@@ -30,8 +34,6 @@ namespace NerdDinner.Controllers {
 
         public ActionResult Index(string q, int? page) {
 
-            const int pageSize = 25;
-
             IQueryable<Dinner> dinners = null;
 
             //Searching?
@@ -40,9 +42,8 @@ namespace NerdDinner.Controllers {
             else 
                 dinners = dinnerRepository.FindUpcomingDinners();
 
-            var paginatedDinners = new PaginatedList<Dinner>(dinners, page ?? 0, pageSize);
-
-            return View(paginatedDinners);
+            int pageIndex = (page ?? 1) - 1;
+            return View(dinners.ToPagedList(pageIndex, PageSize));
         }
 
         //
@@ -53,7 +54,7 @@ namespace NerdDinner.Controllers {
                 return new FileNotFoundResult { Message = "No Dinner found due to invalid dinner id" };
             }
 
-            Dinner dinner = dinnerRepository.GetDinner(id.Value);
+            Dinner dinner = dinnerRepository.Find(id.Value);
 
             if (dinner == null) {
                 return new FileNotFoundResult { Message = "No Dinner found for that id" };
@@ -68,7 +69,10 @@ namespace NerdDinner.Controllers {
         [Authorize]
         public ActionResult Edit(int id) {
 
-            Dinner dinner = dinnerRepository.GetDinner(id);
+            Dinner dinner = dinnerRepository.Find(id);
+
+            if (dinner == null)
+                return View("NotFound");
 
             if (!dinner.IsHostedBy(User.Identity.Name))
                 return View("InvalidOwner");
@@ -82,13 +86,13 @@ namespace NerdDinner.Controllers {
         [HttpPost, Authorize]
         public ActionResult Edit(int id, FormCollection collection) {
 
-            Dinner dinner = dinnerRepository.GetDinner(id);
+            Dinner dinner = dinnerRepository.Find(id);
 
             if (!dinner.IsHostedBy(User.Identity.Name))
                 return View("InvalidOwner");
 
             try {
-                UpdateModel(dinner, "Dinner");
+                UpdateModel(dinner);
 
                 dinnerRepository.Save();
 
@@ -109,7 +113,7 @@ namespace NerdDinner.Controllers {
                EventDate = DateTime.Now.AddDays(7)
             };
 
-            return View(new DinnerFormViewModel(dinner));
+            return View(dinner);
         } 
 
         //
@@ -126,15 +130,17 @@ namespace NerdDinner.Controllers {
                 RSVP rsvp = new RSVP();
                 rsvp.AttendeeNameId = nerd.Name;
                 rsvp.AttendeeName = nerd.FriendlyName;
+
+                dinner.RSVPs = new List<RSVP>();
                 dinner.RSVPs.Add(rsvp);
 
-                dinnerRepository.Add(dinner);
+                dinnerRepository.InsertOrUpdate(dinner);
                 dinnerRepository.Save();
 
                 return RedirectToAction("Details", new { id=dinner.DinnerID });
             }
 
-            return View(new DinnerFormViewModel(dinner));
+            return View(dinner);
         }
 
         //
@@ -143,7 +149,7 @@ namespace NerdDinner.Controllers {
         [Authorize]
         public ActionResult Delete(int id) {
 
-            Dinner dinner = dinnerRepository.GetDinner(id);
+            Dinner dinner = dinnerRepository.Find(id);
 
             if (dinner == null)
                 return View("NotFound");
@@ -160,7 +166,7 @@ namespace NerdDinner.Controllers {
         [HttpPost, Authorize]
         public ActionResult Delete(int id, string confirmButton) {
 
-            Dinner dinner = dinnerRepository.GetDinner(id);
+            Dinner dinner = dinnerRepository.Find(id);
 
             if (dinner == null)
                 return View("NotFound");
@@ -168,7 +174,7 @@ namespace NerdDinner.Controllers {
             if (!dinner.IsHostedBy(User.Identity.Name))
                 return View("InvalidOwner");
 
-            dinnerRepository.Delete(dinner);
+            dinnerRepository.Delete(id);
             dinnerRepository.Save();
 
             return View("Deleted");
@@ -180,7 +186,7 @@ namespace NerdDinner.Controllers {
             throw new HttpException(404, "Action not found");
         }
 
-        public ActionResult Confused()
+        public ActionResult Lost()
         {
             return View();
         }
@@ -195,7 +201,7 @@ namespace NerdDinner.Controllers {
         {
 
             NerdIdentity nerd = (NerdIdentity)User.Identity;
-            var userDinners = from dinner in dinnerRepository.FindAllDinners()
+            var userDinners = from dinner in dinnerRepository.All
                               where
                                 (
                                 String.Equals((dinner.HostedById ?? dinner.HostedBy), nerd.Name)
