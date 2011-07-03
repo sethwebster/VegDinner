@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using NerdDinner.Helpers;
+using NerdDinner.Filters;
 
 namespace NerdDinner
 {
@@ -16,6 +17,7 @@ namespace NerdDinner
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new PortNumberFilterAttribute());
         }
 
         public static void RegisterRoutes(RouteCollection routes)
