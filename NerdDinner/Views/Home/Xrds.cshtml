@@ -1,10 +1,13 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
-<xrds:xrds xmlns:xrds="xri://$xrds" xmlns:openid="http://openid.net/xmlns/1.0" xmlns="xri://$xrd*($v*2.0)">
-    <xrd>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xrds:XRDS
+	xmlns:xrds="xri://$xrds"
+	xmlns:openid="http://openid.net/xmlns/1.0"
+	xmlns="xri://$xrd*($v*2.0)">
+	<XRD>
 		<Service priority="1">
 			<Type>http://specs.openid.net/auth/2.0/return_to</Type>
-			<URI>@{ new Uri((Request.Url.ToString().Contains("localhost") ? Request.Url : new Uri(Request.Url.ToString().Replace(":14582", ""))), Response.ApplyAppPathModifier("~/Auth/LogOnPostAssertion")); }</URI>
-			<URI>@{ new Uri((Request.Url.ToString().Contains("localhost") ? Request.Url : new Uri(Request.Url.ToString().Replace(":14582", ""))), Response.ApplyAppPathModifier("~/Auth/PopUpReturnTo")); }</URI>
+			<URI>@{ new Uri(Request.Url, Response.ApplyAppPathModifier("~/Auth/LogOnPostAssertion")); }</URI>
+			<URI>@{ new Uri(Request.Url, Response.ApplyAppPathModifier("~/Auth/PopUpReturnTo")); }</URI>
 		</Service>
-	</xrd>
-</xrds:xrds>
+	</XRD>
+</xrds:XRDS>
