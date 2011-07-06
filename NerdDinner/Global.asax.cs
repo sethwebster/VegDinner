@@ -6,6 +6,8 @@ using System.Web.Routing;
 using System.Web.Security;
 using NerdDinner.Helpers;
 using NerdDinner.Filters;
+using System.Data.Entity;
+using NerdDinner.Models;
 
 namespace NerdDinner
 {
@@ -65,6 +67,7 @@ namespace NerdDinner
             //ViewEngines.Engines.AddGenericMobile<WebFormViewEngine>();
             ViewEngines.Engines.AddGenericMobile<RazorViewEngine>();
             ViewEngines.Engines.Add(new RazorViewEngine());
+            Database.SetInitializer<NerdDinners>(new Devtalk.EF.CodeFirst.DontDropDbJustCreateTablesIfModelChanged<NerdDinners>());
         }
 
         void MvcApplication_PostAuthenticateRequest(object sender, EventArgs e)

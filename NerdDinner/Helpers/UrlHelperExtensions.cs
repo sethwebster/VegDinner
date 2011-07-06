@@ -13,6 +13,7 @@ namespace System.Web.Mvc
         {
             if (urlHelper.RequestContext.HttpContext.Request.Url.ToString().Contains("localhost"))
                 return new Uri(HttpContext.Current.Request.Url, urlHelper.Action(actionName));
+
             return new Uri(new Uri(HttpContext.Current.Request.Url.ToString().Replace(":14582", "")), urlHelper.Action(actionName));
 
         }
