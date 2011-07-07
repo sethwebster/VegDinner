@@ -6,6 +6,22 @@ NerdDinner._points = [];
 NerdDinner._shapes = [];
 NerdDinner.ipInfoDbKey = '';
 
+NerdDinner.AddMapLoadedCallback = function (callback) {
+    if (!this._loadedCallbacks) {
+        this._loadedCallbacks = Array();
+    }
+    this._loadedCallbacks[this._loadedCallbacks.length] = callback;
+}
+
+NerdDinner.InvokeMapLoadedCallbacks = function () {
+    if (this._loadedCallbacks) {
+        for (var i = 0; i < this._loadedCallbacks.length; i++) {
+            var cb = this._loadedCallbacks[i];
+            cb(NerdDinner);
+        }
+    }
+}
+
 NerdDinner.LoadMap = function (latitude, longitude, onMapLoaded) {
     NerdDinner._map = new VEMap(NerdDinner.MapDivId);
 
