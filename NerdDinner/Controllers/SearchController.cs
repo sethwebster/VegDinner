@@ -88,7 +88,7 @@ namespace NerdDinner.Controllers
                                      select dinner;
 
             var jsonDinners =
-                mostPopularDinners.Take(limit.Value).AsEnumerable()
+                mostPopularDinners.Take(limit.Value).ToArray()
                 .Select(item => JsonDinnerFromDinner(item));
 
             return Json(jsonDinners.ToList());

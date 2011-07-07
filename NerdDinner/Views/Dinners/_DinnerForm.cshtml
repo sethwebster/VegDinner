@@ -18,12 +18,10 @@
     </fieldset>
 }
     <script type="text/javascript">
+            $('.datetime').datetime();
 //<![CDATA[
         $(document).ready(function () {
             NerdDinner.EnableMapMouseClickCallback();
-
-            $('#EventDate').datetimepicker();
-
             $("#Address").blur(function (evt) {
                 //If it's time to look for an address, 
                 // clear out the Lat and Lon
