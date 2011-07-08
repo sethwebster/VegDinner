@@ -52,7 +52,7 @@ namespace NerdDinner.Controllers
             if (dinner == null)
                 return View("NotFound");
 
-            return new iCalResult(dinner, "NerdDinner.ics");
+            return new iCalResult(dinner, "VegDinner.ics");
         }
 
         public ActionResult Flair([DefaultValue("html")]string format)
