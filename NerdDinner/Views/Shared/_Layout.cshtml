@@ -8,21 +8,19 @@
     <meta name="description" content="Host and promote your own Nerd Dinner free!" />
     <link title="NerdDinner.com" rel="search" type="application/opensearchdescription+xml" href="@Url.Content("~/Services/OpenSearch.ashx")" />
     <link href="@Url.Content("~/Content/Production.css?v=2")" rel="stylesheet" type="text/css" media="screen" />
-   
-    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.11/themes/humanity/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.5.2.min.js" type="text/javascript"></script> 
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.11/jquery-ui.min.js" type="text/javascript"></script> 
-
+    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.11/themes/humanity/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.11/jquery-ui.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-       if (typeof jQuery == 'undefined') {
-           document.write(unescape("%3Clink href='/Content/themes/base/jquery.ui.all.css' rel='stylesheet' type='text/css'%3E"));
-           document.write(unescape("%3Cscript src='/Scripts/jquery-1.5.2.min.js' type='text/javascript'%3E%3C/script%3E"));
-           document.write(unescape("%3Cscript src='/Scripts/jquery-ui-1.8.11.min.js' type='text/javascript'%3E%3C/script%3E"));
-       }
-   </script>
-
+        if (typeof jQuery == 'undefined') {
+            document.write(unescape("%3Clink href='/Content/themes/base/jquery.ui.all.css' rel='stylesheet' type='text/css'%3E"));
+            document.write(unescape("%3Cscript src='/Scripts/jquery-1.5.2.min.js' type='text/javascript'%3E%3C/script%3E"));
+            document.write(unescape("%3Cscript src='/Scripts/jquery-ui-1.8.11.min.js' type='text/javascript'%3E%3C/script%3E"));
+        }
+    </script>
     <script src="@Url.Content("~/Scripts/modernizr-1.7.min.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/yepnope.1.0.1-min.js")" type="text/javascript"></script>    
+    <script src="@Url.Content("~/Scripts/yepnope.1.0.1-min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/date.format.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/NerdDinner.js?v=11")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/timepicker_plug/TimePickerAddOn.js")" type="text/javascript"></script>
@@ -82,21 +80,27 @@
             pageTracker._initData();
             pageTracker._trackPageview();
         </script>
+        <script type='text/javascript'>
 
+            var _ues = {
+                host: 'vegdinner.userecho.com',
+                forum: '7155',
+                lang: 'en',
+                tab_corner_radius: 10,
+                tab_font_size: 20,
+                tab_image_hash: 'RmVlZGJhY2s%3D',
+                tab_alignment: 'left',
+                tab_text_color: '#FFFFFF',
+                tab_bg_color: '#BD6B3C',
+                tab_hover_color: '#F45C5C'
+            };
 
-@*
-        <script type="text/javascript">
-            UserVoice.Tab.show({
-                key: 'nerddinner',
-                host: 'feedback.nerddinner.com',
-                forum: 'general',
-                alignment: 'right', /* 'left', 'right' */
-                background_color: '#A2CC3B',
-                text_color: 'white', /* 'white', 'black' */
-                hover_color: '#7A0100',
-                lang: 'en' /* 'en', 'de', 'nl', 'es', 'fr' */
-            });
-        </script>*@
+            (function () {
+                var _ue = document.createElement('script'); _ue.type = 'text/javascript'; _ue.async = true;
+                _ue.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/' : 'http://') + 'cdn.userecho.com/js/widget-1.4.gz.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(_ue, s);
+            })();
 
+        </script>
 </body>
 </html>
