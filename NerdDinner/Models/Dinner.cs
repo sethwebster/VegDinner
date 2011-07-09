@@ -30,7 +30,8 @@ namespace NerdDinner.Models
 
         [Required(ErrorMessage = "Contact phone is required")]
         [StringLength(20, ErrorMessage = "Contact phone may not be longer than 20 characters")]
-        [Display(Name = "Contact Info")]
+        [Display(Name = "Contact Phone")]
+        [UIHint("PhoneNumber")]
         public string ContactPhone { get; set; }
 
         [Required(ErrorMessage = "Address is required")]

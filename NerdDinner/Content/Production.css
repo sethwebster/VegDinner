@@ -388,3 +388,22 @@ strong {
     padding-top: 2px;
     padding-bottom: 2px;
 }
+
+
+input[type=text], select,textarea, input[type=tel] 
+{
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding:5px;
+    margin:2px;
+}
+
+input[type=submit], button
+{
+    padding:5px;
+    background-color:#eee;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
