@@ -80,12 +80,22 @@ namespace NerdDinner
 
         public Uri GetAbsoluteUri(string pathAndQuery)
         {
-            return genericUriResolver.GetAbsoluteUri(pathAndQuery);
+            var absUri = genericUriResolver.GetAbsoluteUri(pathAndQuery);
+            if (!absUri.ToString().Contains("localhost"))
+            {
+                absUri = new Uri(absUri.ToString().Replace(":14582", ""));
+            }
+            return absUri;
         }
 
         public string GetEndpointTemplate(QueryType queryType, ResponseFormat responseFormat)
         {
-            return genericUriResolver.GetEndpointTemplate(queryType, responseFormat);
+            string template = genericUriResolver.GetEndpointTemplate(queryType, responseFormat);
+            if (!template.Contains("localhost"))
+            {
+                template = template.Replace(":14582", "");
+            }
+            return template;
         }
 
         public string GetSearchTemplate()
@@ -100,7 +110,12 @@ namespace NerdDinner
 
         public Uri GetSearchUri(string term)
         {
-            return genericUriResolver.GetSearchUri(term);
+            var searchUri = genericUriResolver.GetSearchUri(term);
+            if (!searchUri.ToString().Contains("localhost"))
+            {
+                searchUri = new Uri(searchUri.ToString().Replace(":14582", ""));
+            }
+            return searchUri;
         }
     }
 }
