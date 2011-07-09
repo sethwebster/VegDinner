@@ -12,6 +12,16 @@ namespace NerdDinner
     /// </summary>
     public class OpenSearch : OpenSearchHandler
     {
+
+        public override void ProcessRequest(HttpContext context)
+        {
+            if (null == this.UriResolver)
+            {
+                this.UriResolver = new VegDinnerUriResolver(new HttpRequestWrapper(context.Request), this.Description.SearchPathTemplate);
+            }
+            base.ProcessRequest(context);
+        }
+
         public override Description Description
         {
             get
@@ -56,6 +66,41 @@ namespace NerdDinner
         public override bool SupportsSuggestions
         {
             get { return true; }
+        }
+    }
+
+    public class VegDinnerUriResolver : IUriResolver
+    {
+        UriResolver genericUriResolver;
+
+        public VegDinnerUriResolver (HttpRequestBase request, string searchPathTemplate)
+        {
+            genericUriResolver = new UriResolver(request, searchPathTemplate);
+        }
+
+        public Uri GetAbsoluteUri(string pathAndQuery)
+        {
+            return genericUriResolver.GetAbsoluteUri(pathAndQuery);
+        }
+
+        public string GetEndpointTemplate(QueryType queryType, ResponseFormat responseFormat)
+        {
+            return genericUriResolver.GetEndpointTemplate(queryType, responseFormat);
+        }
+
+        public string GetSearchTemplate()
+        {
+            var template = genericUriResolver.GetSearchTemplate();
+            if (!template.Contains("localhost"))
+            {
+                template = template.Replace(":14582","");
+            }
+            return template;
+        }
+
+        public Uri GetSearchUri(string term)
+        {
+            return genericUriResolver.GetSearchUri(term);
         }
     }
 }
