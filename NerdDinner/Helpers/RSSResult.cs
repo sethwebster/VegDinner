@@ -27,6 +27,10 @@ namespace NerdDinner.Controllers
         public override void ExecuteResult(ControllerContext context)
         {
             currentUrl = context.RequestContext.HttpContext.Request.Url;
+            if (currentUrl.ToString().Contains("localhost") == false)
+            {
+                currentUrl = new Uri(currentUrl.ToString().Replace(":14582", ""));
+            }
             base.ExecuteResult(context);
         }
         protected override void WriteFile(System.Web.HttpResponseBase response)
