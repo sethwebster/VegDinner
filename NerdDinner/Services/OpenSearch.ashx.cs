@@ -12,21 +12,21 @@ namespace NerdDinner
     /// </summary>
     public class OpenSearch : OpenSearchHandler
     {
-        protected override Description Description
+        public override Description Description
         {
             get
             {
                 return new Description
                 {
-                    DisplayName = "NerdDinner.com",
-                    LongDescription = "Nerd Dinner - Organizing the world's nerds and helping them eat in packs",
+                    DisplayName = "VegDinner.com",
+                    LongDescription = "VegDinner - Organizing the world's vegans and helping them eat in packs",
                     SearchPathTemplate = "/Dinners?q={0}",
                     IconPath = "~/favicon.ico"
                 };
             }
         }
 
-        protected override IEnumerable<SearchResult> GetResults(string q)
+        public override IEnumerable<SearchResult> GetResults(string q)
         {
             var dinners = new DinnerRepository().FindDinnersByText(q).ToArray();
 
@@ -40,7 +40,7 @@ namespace NerdDinner
                        };
         }
 
-        protected override IEnumerable<SearchSuggestion> GetSuggestions(string term)
+        public override IEnumerable<SearchSuggestion> GetSuggestions(string term)
         {
             var dinners = new DinnerRepository().FindDinnersByText(term).ToArray();
 
@@ -53,7 +53,7 @@ namespace NerdDinner
                    };
         }
 
-        protected override bool SupportsSuggestions
+        public override bool SupportsSuggestions
         {
             get { return true; }
         }
