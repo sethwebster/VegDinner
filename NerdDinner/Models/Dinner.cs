@@ -49,6 +49,11 @@ namespace NerdDinner.Models
         public double Longitude { get; set; }
 
         [HiddenInput(DisplayValue = false)]
+        public int TimeZoneOffset { get; set; }
+
+
+
+        [HiddenInput(DisplayValue = false)]
         public string HostedById { get; set; }
 
         public virtual ICollection<RSVP> RSVPs { get; set; }

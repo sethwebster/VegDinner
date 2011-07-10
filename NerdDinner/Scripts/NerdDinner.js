@@ -92,7 +92,10 @@ NerdDinner._callbackForLocation = function (layer, resultsArray, places, hasMore
         }
         var LL = new VELatLong(item.LatLong.Latitude,
                         item.LatLong.Longitude);
-
+        $.getJSON("http://api.geonames.org/timezoneJSON?lat=" + item.LatLong.Latitude + "&lng=" + item.LatLong.Longitude + "&username=vegdinner&style=full",
+        function (res) {
+            $("#TimeZoneOffset").val(res.gmtOffset);
+        });
         NerdDinner.LoadPin(LL, item.Name, description);
     });
 
