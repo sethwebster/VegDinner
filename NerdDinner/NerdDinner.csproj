@@ -59,7 +59,7 @@
       <HintPath>..\packages\Glimpse.Mvc3.0.83\lib\net40\Glimpse.Mvc3.dll</HintPath>
     </Reference>
     <Reference Include="OpenSearchToolkit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>lib\OpenSearchToolkit.dll</HintPath>
+      <HintPath>..\packages\OpenSearchToolkit.CustomUriResolver.1.2\lib\OpenSearchToolkit.dll</HintPath>
     </Reference>
     <Reference Include="PagedList">
       <HintPath>..\packages\PagedList.1.2.1.0\lib\40\PagedList.dll</HintPath>
