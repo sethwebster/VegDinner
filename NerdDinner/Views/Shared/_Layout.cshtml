@@ -6,6 +6,7 @@
     <meta content="Nerd, Dinner, Geek, Luncheon, Dweeb, Breakfast, Technology, Bar, Beer, Wonk"
         name="keywords" />
     <meta name="description" content="Host and promote your own Nerd Dinner free!" />
+    <meta http-equiv='X-UA-Compatible' content='IE=9' />
     <link title="vegdinner.co" rel="search" type="application/opensearchdescription+xml" href="@Url.Content("~/Services/OpenSearch.ashx")" />
     <link href="@Url.Content("~/Content/Production.css?v=2")" rel="stylesheet" type="text/css" media="screen" />
     <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.11/themes/humanity/jquery-ui.css"
@@ -37,7 +38,8 @@
         <header>
             <div id="title">
                 <h1>
-                    <a href="@Url.Content("~/")" title="vegdinner.co - Helping Vegans get together and eat!" class="logo"></a>
+                    <a href="@Url.Content("~/")" title="vegdinner.co - Helping Vegans get together and eat!" class="logo">
+                    </a>
                 </h1>
             </div>
             <div id="logindisplay">
@@ -69,16 +71,17 @@
         <footer>
             Code by  <a href="http://www.hanselman.com">Hanselman</a>, <a href="http://weblogs.asp.net/scottgu">
                 Guthrie</a>, <a href="http://weblogs.asp.net/jgalloway">Galloway</a>, <a href="http://blog.wekeroad.com">
-                    Conery</a>, <a href="http://blog.nerdbank.net/">Arnott</a>, and <a href="http://sethwebster.com?f=vdf">Seth Webster</a>. JavaScript
+                    Conery</a>, <a href="http://blog.nerdbank.net/">Arnott</a>, and <a href="http://sethwebster.com?f=vdf">Seth
+                        Webster</a>. JavaScript
             by <a href="http://encosia.com">Dave Ward</a>. ASP.NET MVC by <a href="http://www.haacked.com">
                 Haack</a> and friends. Style by <a href="http://michaeldorian.com/">Michael Dorian Bach</a>.<br />
             Source Code at <a href="http://sethim.us/vegdinner">http://sethim.us/vegdinner</a> (GitHub).
         </footer>
-        <script type="text/javascript">
-            var pageTracker = _gat._getTracker("UA-6399325-1");
-            pageTracker._initData();
-            pageTracker._trackPageview();
-        </script>
+        @* <script type="text/javascript">
+               var pageTracker = _gat._getTracker("UA-6399325-1");
+               pageTracker._initData();
+               pageTracker._trackPageview();
+        </script>*@
         <script type='text/javascript'>
 
             var _ues = {
@@ -101,5 +104,6 @@
             })();
 
         </script>
+    </div>
 </body>
 </html>
