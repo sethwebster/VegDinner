@@ -32,6 +32,21 @@
     <link rel="odata.service" title="vegdinner.co OData Service" href="@Url.Content("~/Services/OData.svc")" />
     <link rel="odata.feed" title="NerdDinner.com OData Service - Dinners" href="@Url.Content("~/Services/OData.svc/Dinners")" />
     @RenderSection("HeadArea", required: false)
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-17288532-3']);
+        _gaq.push(['_setDomainName', 'none']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
 </head>
 <body>
     <div class="page">
@@ -77,11 +92,6 @@
                 Haack</a> and friends. Style by <a href="http://michaeldorian.com/">Michael Dorian Bach</a>.<br />
             Source Code at <a href="http://sethim.us/vegdinner">http://sethim.us/vegdinner</a> (GitHub).
         </footer>
-        @* <script type="text/javascript">
-               var pageTracker = _gat._getTracker("UA-6399325-1");
-               pageTracker._initData();
-               pageTracker._trackPageview();
-        </script>*@
         <script type='text/javascript'>
 
             var _ues = {
