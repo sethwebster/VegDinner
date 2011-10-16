@@ -80,8 +80,8 @@ namespace NerdDinner.Controllers
 
         public ActionResult RsvpBegin(string identifier, int id)
         {
-            Uri returnTo = new Uri(new Uri(Realm.AutoDetect), Url.Action("RsvpFinish"));
-            IAuthenticationRequest request = relyingParty.CreateRequest(identifier, Realm.AutoDetect, returnTo);
+            Uri returnTo = new Uri(new Uri(Realm.AutoDetect.AutoResolve()), Url.Action("RsvpFinish"));
+            IAuthenticationRequest request = relyingParty.CreateRequest(identifier, Realm.AutoDetect.AutoResolve(), returnTo);
             request.SetUntrustedCallbackArgument("DinnerId", id.ToString(CultureInfo.InvariantCulture));
             request.AddExtension(new ClaimsRequest { Email = DemandLevel.Require, FullName = DemandLevel.Request });
             return request.RedirectingResponse.AsActionResult();
@@ -135,7 +135,7 @@ namespace NerdDinner.Controllers
 
         public ActionResult RsvpTwitterBegin(int id)
         {
-            Uri callback = new Uri(new Uri(Realm.AutoDetect), Url.Action("RsvpTwitterFinish", new { id = id }));
+            Uri callback = new Uri(new Uri(Realm.AutoDetect.AutoResolve()), Url.Action("RsvpTwitterFinish", new { id = id }));
             return TwitterConsumer.StartSignInWithTwitter(false, callback).AsActionResult();
         }
 

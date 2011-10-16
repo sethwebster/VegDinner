@@ -30,15 +30,8 @@ namespace NerdDinner.Services
                             HttpUtility.UrlEncode(someTypeInResourceAssembly.ToString()),
                             HttpUtility.UrlEncode(manifestResourceName));
 
-                var retUrl = new Uri(path);
+                var retUrl = AppHarborUriHelper.ResolveUri(path);
 
-                // If we are not operating locally, remove the port # since 
-                if (retUrl.Host.ToLower() != "localhost")
-                {
-                    retUrl = new Uri(
-                        retUrl.Scheme + "://" + retUrl.Host + retUrl.PathAndQuery
-                   );
-                }
                 return retUrl;
             }
         }

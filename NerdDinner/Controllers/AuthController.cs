@@ -16,7 +16,8 @@ namespace MvcRelyingParty.Controllers {
 	using DotNetOpenAuth.OpenId.RelyingParty;
     using System.Web.Security;
     using DotNetOpenAuth.OpenId.Extensions.SimpleRegistration;
-
+    using NerdDinner.Services;
+    using NerdDinner;
 	public class AuthController : Controller {
 
 		/// <summary>
@@ -42,7 +43,7 @@ namespace MvcRelyingParty.Controllers {
 
 			return RelyingParty.AjaxDiscovery(
 				identifier,
-				Realm.AutoDetect,
+				Realm.AutoDetect.AutoResolve(),
 				Url.ActionFull("PopUpReturnTo"),
 				this.PrivacyPolicyUrl);
 		}

@@ -121,6 +121,7 @@
     <Compile Include="Controllers\RSVPController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
+    <Compile Include="Extensions\RealmExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -147,6 +148,7 @@
     <Compile Include="Models\RSVP.cs" />
     <Compile Include="Models\RuleViolation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AppHarborUriHelper.cs" />
     <Compile Include="Services\EmbeddedResourceUrlService.cs" />
     <Compile Include="Services\GeolocationService.cs" />
     <Compile Include="Services\JSONPSupportBehavior.cs" />
