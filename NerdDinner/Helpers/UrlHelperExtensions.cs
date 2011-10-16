@@ -11,18 +11,12 @@ namespace System.Web.Mvc
     {
         internal static Uri ActionFull(this UrlHelper urlHelper, string actionName)
         {
-            if (urlHelper.RequestContext.HttpContext.Request.Url.ToString().Contains("localhost"))
-                return new Uri(HttpContext.Current.Request.Url, urlHelper.Action(actionName));
-
-            return new Uri(new Uri(HttpContext.Current.Request.Url.ToString().Replace(":14582", "")), urlHelper.Action(actionName));
-
+            return new Uri(HttpContext.Current.Request.Url, urlHelper.Action(actionName));
         }
 
         internal static Uri ActionFull(this UrlHelper urlHelper, string actionName, string controllerName)
         {
-            if (urlHelper.RequestContext.HttpContext.Request.Url.ToString().Contains("localhost"))
-                return new Uri(HttpContext.Current.Request.Url, urlHelper.Action(actionName, controllerName));
-            return new Uri(new Uri(HttpContext.Current.Request.Url.ToString().Replace(":14582", "")), urlHelper.Action(actionName, controllerName));
+            return new Uri(HttpContext.Current.Request.Url, urlHelper.Action(actionName, controllerName));
         }
 
         /// <summary>

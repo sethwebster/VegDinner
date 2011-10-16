@@ -57,16 +57,19 @@ namespace NerdDinner.Controllers
         }
 
         [HttpPost]
-        public ActionResult SearchByPlaceNameOrZip(string placeOrZip)
+        public ActionResult SearchByPlaceNameOrZip(string Location)
         {
-            if (String.IsNullOrEmpty(placeOrZip)) return null; ;
-            LatLong location = GeolocationService.PlaceOrZipToLatLong(placeOrZip);
+            if (String.IsNullOrEmpty(Location)) return null; ;
+            LatLong location = GeolocationService.PlaceOrZipToLatLong(Location);
+            if (location != null)
+            {
+                var dinners = dinnerRepository.
+                                FindByLocation(location.Lat, location.Long).
+                                OrderByDescending(p => p.EventDate);
 
-            var dinners = dinnerRepository.
-                            FindByLocation(location.Lat, location.Long).
-                            OrderByDescending(p => p.EventDate);
-
-            return View("Results", dinners.ToPagedList(1, 20));
+                return View("Results", dinners.ToPagedList(1, 20));
+            }
+            return View("Results", null);
         }
 
      
@@ -88,7 +91,7 @@ namespace NerdDinner.Controllers
                                      select dinner;
 
             var jsonDinners =
-                mostPopularDinners.Take(limit.Value).ToArray()
+                mostPopularDinners.Take(limit.Value).AsEnumerable()
                 .Select(item => JsonDinnerFromDinner(item));
 
             return Json(jsonDinners.ToList());

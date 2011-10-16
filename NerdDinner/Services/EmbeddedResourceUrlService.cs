@@ -23,10 +23,7 @@ namespace NerdDinner.Services
                 string completeUrl = HttpContext.Current.Request.Url.ToString();
                 string host = completeUrl.Substring(0,
                     completeUrl.IndexOf(HttpContext.Current.Request.Url.AbsolutePath));
-                if (!host.Contains("localhost"))
-                {
-                    host = host.Replace(":14582", "");
-                }
+
                 var path = string.Format(pathFormat,
                             host,
                             HttpUtility.UrlEncode(assembly.FullName),

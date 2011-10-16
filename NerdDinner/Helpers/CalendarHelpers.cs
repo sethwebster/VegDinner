@@ -15,7 +15,7 @@ namespace NerdDinner.Helpers
     {
         public static Event DinnerToEvent(Dinner dinner, iCalendar iCal)
         {
-            string eventLink = "http://vegdinner.co/" + dinner.DinnerID;
+            string eventLink = "http://nrddnr.com/" + dinner.DinnerID;
             Event evt = iCal.Create<Event>();
             evt.Start = dinner.EventDate;
             evt.Duration = new TimeSpan(3, 0, 0);

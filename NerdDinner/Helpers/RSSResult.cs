@@ -27,10 +27,6 @@ namespace NerdDinner.Controllers
         public override void ExecuteResult(ControllerContext context)
         {
             currentUrl = context.RequestContext.HttpContext.Request.Url;
-            if (currentUrl.ToString().Contains("localhost") == false)
-            {
-                currentUrl = new Uri(currentUrl.ToString().Replace(":14582", ""));
-            }
             base.ExecuteResult(context);
         }
         protected override void WriteFile(System.Web.HttpResponseBase response)
@@ -45,8 +41,8 @@ namespace NerdDinner.Controllers
                 var item = new SyndicationItem(
                     title: d.Title,
                     content: contentString,
-                    itemAlternateLink: new Uri("http://vegdinner.co/" + d.DinnerID),
-                    id: "http://vegdinner.co/" + d.DinnerID,
+                    itemAlternateLink: new Uri("http://nrddnr.com/" + d.DinnerID),
+                    id: "http://nrddnr.com/" + d.DinnerID,
                     lastUpdatedTime: d.EventDate.ToUniversalTime()
                     );
                 item.PublishDate = d.EventDate.ToUniversalTime();

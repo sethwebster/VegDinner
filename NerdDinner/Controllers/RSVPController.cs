@@ -55,7 +55,7 @@ namespace NerdDinner.Controllers
         //
         // AJAX: /RSVP/Cancel/1
 
-        [Authorize]
+        [Authorize, HttpPost]
         public ActionResult Cancel(int id)
         {
 

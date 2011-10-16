@@ -1,19 +1,12 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NerdDinner.Controllers;
+﻿using NerdDinner.Controllers;
 using System.Web.Mvc;
-using NerdDinner.Models;
 using NerdDinner.Tests.Fakes;
 using Moq;
-using NerdDinner.Helpers;
-using System.Web.Routing;
+using NUnit.Framework;
 
-namespace NerdDinner.Tests.Controllers {
- 
-    [TestClass]
+namespace NerdDinner.Tests.Controllers
+{
+    [TestFixture]
     public class RSVPControllerTest {
 
         RSVPController CreateRSVPController() {
@@ -36,7 +29,7 @@ namespace NerdDinner.Tests.Controllers {
             return controller;
         }
 
-        [TestMethod]
+        [Test]
         public void RegisterAction_Should_Return_Content()
         {
             // Arrange
@@ -46,10 +39,10 @@ namespace NerdDinner.Tests.Controllers {
             var result = controller.Register(1);
 
             // Assert
-            Assert.IsInstanceOfType(result, typeof(ContentResult));
+            Assert.IsInstanceOf<ContentResult>(result);
         }
 
-        [TestMethod]
+        [Test]
         public void CancelAction_Should_Return_Content()
         {
             // Arrange
@@ -59,7 +52,7 @@ namespace NerdDinner.Tests.Controllers {
             var result = controller.Cancel(1);
 
             // Assert
-            Assert.IsInstanceOfType(result, typeof(ContentResult));
+            Assert.IsInstanceOf<ContentResult>(result);
         }
     }
 }

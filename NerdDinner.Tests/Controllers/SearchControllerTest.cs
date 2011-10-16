@@ -1,19 +1,12 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
 using NerdDinner.Controllers;
 using System.Web.Mvc;
-using NerdDinner.Models;
 using NerdDinner.Tests.Fakes;
-using Moq;
-using NerdDinner.Helpers;
-using System.Web.Routing;
+using NUnit.Framework;
 
-namespace NerdDinner.Tests.Controllers {
- 
-    [TestClass]
+namespace NerdDinner.Tests.Controllers
+{
+    [TestFixture]
     public class SearchControllerTest {
 
         SearchController CreateSearchController() {
@@ -23,7 +16,7 @@ namespace NerdDinner.Tests.Controllers {
             return new SearchController(repository);
         }
 
-        [TestMethod]
+        [Test]
         public void SearchByLocationAction_Should_Return_Json()
         {
 
@@ -34,10 +27,10 @@ namespace NerdDinner.Tests.Controllers {
             var result = controller.SearchByLocation(99, -99);
 
             // Assert
-            Assert.IsInstanceOfType(result, typeof(JsonResult));
+            Assert.IsInstanceOf<JsonResult>(result);
         }
 
-        [TestMethod]
+        [Test]
         public void SearchByLocationAction_Should_Return_JsonDinners()
         {
 
@@ -48,12 +41,12 @@ namespace NerdDinner.Tests.Controllers {
             var result = (JsonResult)controller.SearchByLocation(99, -99);
 
             // Assert
-            Assert.IsInstanceOfType(result.Data, typeof(List<JsonDinner>));
+            Assert.IsInstanceOf<List<JsonDinner>>(result.Data);
             var dinners = (List<JsonDinner>)result.Data;
             Assert.AreEqual(101, dinners.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void GetMostPopularDinnersAction_WithLimit_Returns_Expected_Dinners()
         {
 
@@ -64,12 +57,12 @@ namespace NerdDinner.Tests.Controllers {
             var result = (JsonResult)controller.GetMostPopularDinners(5);
 
             // Assert
-            Assert.IsInstanceOfType(result.Data, typeof(List<JsonDinner>));
+            Assert.IsInstanceOf<List<JsonDinner>>(result.Data);
             var dinners = (List<JsonDinner>)result.Data;
             Assert.AreEqual(5, dinners.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void GetMostPopularDinnersAction_WithNoLimit_Returns_Expected_Dinners()
         {
 
@@ -80,7 +73,7 @@ namespace NerdDinner.Tests.Controllers {
             var result = (JsonResult)controller.GetMostPopularDinners(null);
 
             // Assert
-            Assert.IsInstanceOfType(result.Data, typeof(List<JsonDinner>));
+            Assert.IsInstanceOf<List<JsonDinner>>(result.Data);
             var dinners = (List<JsonDinner>)result.Data;
             Assert.AreEqual(40, dinners.Count);
         }

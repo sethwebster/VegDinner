@@ -1,0 +1,177 @@
+﻿<error errorId="87d0c5b7-4cd7-4d11-8702-be61b55ead85" host="SETHWEBSTER-PC" type="System.Data.SqlClient.SqlException" message="Failed to generate a user instance of SQL Server due to a failure in starting the process for the user instance. The connection will be closed." source=".Net SqlClient Data Provider" detail="System.Data.ProviderIncompatibleException: The provider did not return a ProviderManifestToken string. ---&gt; System.Data.SqlClient.SqlException: Failed to generate a user instance of SQL Server due to a failure in starting the process for the user instance. The connection will be closed.&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionPool.GetConnection(DbConnection owningObject)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionFactory.GetConnection(DbConnection owningConnection)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)&#xD;&#xA;   at System.Data.SqlClient.SqlConnection.Open()&#xD;&#xA;   at System.Data.SqlClient.SqlProviderServices.UsingConnection(SqlConnection sqlConnection, Action`1 act)&#xD;&#xA;   at System.Data.SqlClient.SqlProviderServices.UsingMasterConnection(SqlConnection sqlConnection, Action`1 act)&#xD;&#xA;   at System.Data.SqlClient.SqlProviderServices.GetDbProviderManifestToken(DbConnection connection)&#xD;&#xA;   at System.Data.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)&#xD;&#xA;   at MvcMiniProfiler.Data.ProfiledDbProviderServices.GetDbProviderManifestToken(DbConnection connection) in C:\Users\sam\Desktop\mvc-mini-profiler\MvcMiniProfiler.EntityFramework\ProfiledDbProviderServices.cs:line 30&#xD;&#xA;   at System.Data.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)&#xD;&#xA;   at System.Data.Entity.ModelConfiguration.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest&amp; providerManifest)&#xD;&#xA;   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)&#xD;&#xA;   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)&#xD;&#xA;   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)&#xD;&#xA;   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.Initialize()&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)&#xD;&#xA;   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()&#xD;&#xA;   at System.Data.Entity.Internal.Linq.InternalSet`1.Include(String path)&#xD;&#xA;   at System.Data.Entity.Infrastructure.DbQuery`1.Include(String path)&#xD;&#xA;   at System.Data.Entity.DbExtensions.Include[T](IQueryable`1 source, String path)&#xD;&#xA;   at System.Data.Entity.DbExtensions.Include[T,TProperty](IQueryable`1 source, Expression`1 path)&#xD;&#xA;   at NerdDinner.Models.DinnerRepository.get_All() in E:\Users\Seth Webster\Desktop\092011\NerdDinner\Models\DinnerRepository.cs:line 43&#xD;&#xA;   at NerdDinner.Models.DinnerRepository.FindUpcomingDinners() in E:\Users\Seth Webster\Desktop\092011\NerdDinner\Models\DinnerRepository.cs:line 27&#xD;&#xA;   at NerdDinner.Controllers.DinnersController.Index(String q, Nullable`1 page) in E:\Users\Seth Webster\Desktop\092011\NerdDinner\Controllers\DinnersController.cs:line 43&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.&lt;&gt;c__DisplayClass15.&lt;InvokeActionMethodWithFilters&gt;b__12()&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.&lt;&gt;c__DisplayClass15.&lt;&gt;c__DisplayClass17.&lt;InvokeActionMethodWithFilters&gt;b__14()&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.&lt;&gt;c__DisplayClass15.&lt;&gt;c__DisplayClass17.&lt;InvokeActionMethodWithFilters&gt;b__14()&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)&#xD;&#xA;   at System.Web.Mvc.Controller.ExecuteCore()&#xD;&#xA;   at System.Web.Mvc.ControllerBase.Execute(RequestContext requestContext)&#xD;&#xA;   at System.Web.Mvc.ControllerBase.System.Web.Mvc.IController.Execute(RequestContext requestContext)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;&gt;c__DisplayClass6.&lt;&gt;c__DisplayClassb.&lt;BeginProcessRequest&gt;b__5()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass1.&lt;MakeVoidDelegate&gt;b__0()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.&lt;&gt;c__DisplayClass8`1.&lt;BeginSynchronous&gt;b__7(IAsyncResult _)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;&gt;c__DisplayClasse.&lt;EndProcessRequest&gt;b__d()&#xD;&#xA;   at System.Web.Mvc.SecurityUtil.&lt;GetCallInAppTrustThunk&gt;b__0(Action f)&#xD;&#xA;   at System.Web.Mvc.SecurityUtil.ProcessInApplicationTrust(Action action)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" time="2011-10-09T01:20:41.8416580Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_CHARSET:ISO-8859-1,utf-8;q=0.7,*;q=0.7&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-us,en;q=0.5&#xD;&#xA;HTTP_COOKIE:__utma=111872281.1090064783.1317862173.1318027078.1318122957.3; __utmz=111872281.1317862173.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); .ASPXAUTH=17D4ECFD2BCAB8025406EAD7411BBF4A997C53F5AA5A7BCBE13290F6F6600C38A4511C9DD4730B42AD591F3CC30823E129695DC57002EC5132A4047512836FC0D54457F8A0ED25536D098E1783E292250CB2AF91C27B96293BBE2902F322A2A390D68D6498124F65BCEE294953B181C0CC3B0A60B7D4AF944E8D76474A580D1CED5F7D376B4472779E10834CB600A63331AF1E5B93146FC0546A936600AE75EF9CD9EE11BFD1E61B382C2B3088BD7047C71CD779D07565E12131F4661F060616A2EE45FE9AF3D1876B971CEEC94DBD036EB48A3690465282552F4099F50F9A33829BC36E3B4653EE33EB21D2EB7B274A; mp_super_properties=%7B%22all%22%3A%20%7B%22%24initial_referrer%22%3A%20%22%22%2C%22%24initial_referring_domain%22%3A%20%22%22%7D%2C%22events%22%3A%20%7B%7D%2C%22funnels%22%3A%20%7B%7D%7D; __utmb=111872281.1.10.1318122957; __utmc=111872281&#xD;&#xA;HTTP_HOST:localhost:50799&#xD;&#xA;HTTP_REFERER:http://localhost:50799/&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.1; WOW64; rv:7.0.1) Gecko/20100101 Firefox/7.0.1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-us,en;q=0.5&#xD;&#xA;Cookie: __utma=111872281.1090064783.1317862173.1318027078.1318122957.3; __utmz=111872281.1317862173.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); .ASPXAUTH=17D4ECFD2BCAB8025406EAD7411BBF4A997C53F5AA5A7BCBE13290F6F6600C38A4511C9DD4730B42AD591F3CC30823E129695DC57002EC5132A4047512836FC0D54457F8A0ED25536D098E1783E292250CB2AF91C27B96293BBE2902F322A2A390D68D6498124F65BCEE294953B181C0CC3B0A60B7D4AF944E8D76474A580D1CED5F7D376B4472779E10834CB600A63331AF1E5B93146FC0546A936600AE75EF9CD9EE11BFD1E61B382C2B3088BD7047C71CD779D07565E12131F4661F060616A2EE45FE9AF3D1876B971CEEC94DBD036EB48A3690465282552F4099F50F9A33829BC36E3B4653EE33EB21D2EB7B274A; mp_super_properties=%7B%22all%22%3A%20%7B%22%24initial_referrer%22%3A%20%22%22%2C%22%24initial_referring_domain%22%3A%20%22%22%7D%2C%22events%22%3A%20%7B%7D%2C%22funnels%22%3A%20%7B%7D%7D; __utmb=111872281.1.10.1318122957; __utmc=111872281&#xD;&#xA;Host: localhost:50799&#xD;&#xA;Referer: http://localhost:50799/&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:7.0.1) Gecko/20100101 Firefox/7.0.1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="E:\Users\Seth Webster\Desktop\092011\NerdDinner\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="SethWebster-PC\Seth Webster" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="" />
+    </item>
+    <item name="HTTPS">
+      <value string="" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Dinners" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="E:\Users\Seth Webster\Desktop\092011\NerdDinner\Dinners" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Dinners" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="50799" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="" />
+    </item>
+    <item name="URL">
+      <value string="/Dinners" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_CHARSET">
+      <value string="ISO-8859-1,utf-8;q=0.7,*;q=0.7" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-us,en;q=0.5" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__utma=111872281.1090064783.1317862173.1318027078.1318122957.3; __utmz=111872281.1317862173.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); .ASPXAUTH=17D4ECFD2BCAB8025406EAD7411BBF4A997C53F5AA5A7BCBE13290F6F6600C38A4511C9DD4730B42AD591F3CC30823E129695DC57002EC5132A4047512836FC0D54457F8A0ED25536D098E1783E292250CB2AF91C27B96293BBE2902F322A2A390D68D6498124F65BCEE294953B181C0CC3B0A60B7D4AF944E8D76474A580D1CED5F7D376B4472779E10834CB600A63331AF1E5B93146FC0546A936600AE75EF9CD9EE11BFD1E61B382C2B3088BD7047C71CD779D07565E12131F4661F060616A2EE45FE9AF3D1876B971CEEC94DBD036EB48A3690465282552F4099F50F9A33829BC36E3B4653EE33EB21D2EB7B274A; mp_super_properties=%7B%22all%22%3A%20%7B%22%24initial_referrer%22%3A%20%22%22%2C%22%24initial_referring_domain%22%3A%20%22%22%7D%2C%22events%22%3A%20%7B%7D%2C%22funnels%22%3A%20%7B%7D%7D; __utmb=111872281.1.10.1318122957; __utmc=111872281" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:50799" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:50799/" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.1; WOW64; rv:7.0.1) Gecko/20100101 Firefox/7.0.1" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__utma">
+      <value string="111872281.1090064783.1317862173.1318027078.1318122957.3" />
+    </item>
+    <item name="__utmz">
+      <value string="111872281.1317862173.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)" />
+    </item>
+    <item name="mp_super_properties">
+      <value string="%7B%22all%22%3A%20%7B%22%24initial_referrer%22%3A%20%22%22%2C%22%24initial_referring_domain%22%3A%20%22%22%7D%2C%22events%22%3A%20%7B%7D%2C%22funnels%22%3A%20%7B%7D%7D" />
+    </item>
+    <item name="__utmb">
+      <value string="111872281.1.10.1318122957" />
+    </item>
+    <item name="__utmc">
+      <value string="111872281" />
+    </item>
+  </cookies>
+</error>

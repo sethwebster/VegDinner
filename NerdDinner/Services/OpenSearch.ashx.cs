@@ -12,31 +12,21 @@ namespace NerdDinner
     /// </summary>
     public class OpenSearch : OpenSearchHandler
     {
-
-        public override void ProcessRequest(HttpContext context)
-        {
-            if (null == this.UriResolver)
-            {
-                this.UriResolver = new VegDinnerUriResolver(new HttpRequestWrapper(context.Request), this.Description.SearchPathTemplate);
-            }
-            base.ProcessRequest(context);
-        }
-
-        public override Description Description
+        protected override Description Description
         {
             get
             {
                 return new Description
                 {
-                    DisplayName = "VegDinner.com",
-                    LongDescription = "VegDinner - Organizing the world's vegans and helping them eat in packs",
+                    DisplayName = "NerdDinner.com",
+                    LongDescription = "Nerd Dinner - Organizing the world's nerds and helping them eat in packs",
                     SearchPathTemplate = "/Dinners?q={0}",
                     IconPath = "~/favicon.ico"
                 };
             }
         }
 
-        public override IEnumerable<SearchResult> GetResults(string q)
+        protected override IEnumerable<SearchResult> GetResults(string q)
         {
             var dinners = new DinnerRepository().FindDinnersByText(q).ToArray();
 
@@ -50,7 +40,7 @@ namespace NerdDinner
                        };
         }
 
-        public override IEnumerable<SearchSuggestion> GetSuggestions(string term)
+        protected override IEnumerable<SearchSuggestion> GetSuggestions(string term)
         {
             var dinners = new DinnerRepository().FindDinnersByText(term).ToArray();
 
@@ -63,59 +53,9 @@ namespace NerdDinner
                    };
         }
 
-        public override bool SupportsSuggestions
+        protected override bool SupportsSuggestions
         {
             get { return true; }
-        }
-    }
-
-    public class VegDinnerUriResolver : IUriResolver
-    {
-        UriResolver genericUriResolver;
-
-        public VegDinnerUriResolver (HttpRequestBase request, string searchPathTemplate)
-        {
-            genericUriResolver = new UriResolver(request, searchPathTemplate);
-        }
-
-        public Uri GetAbsoluteUri(string pathAndQuery)
-        {
-            var absUri = genericUriResolver.GetAbsoluteUri(pathAndQuery);
-            if (!absUri.ToString().Contains("localhost"))
-            {
-                absUri = new Uri(absUri.ToString().Replace(":14582", ""));
-            }
-            return absUri;
-        }
-
-        public string GetEndpointTemplate(QueryType queryType, ResponseFormat responseFormat)
-        {
-            string template = genericUriResolver.GetEndpointTemplate(queryType, responseFormat);
-            if (!template.Contains("localhost"))
-            {
-                template = template.Replace(":14582", "");
-            }
-            return template;
-        }
-
-        public string GetSearchTemplate()
-        {
-            var template = genericUriResolver.GetSearchTemplate();
-            if (!template.Contains("localhost"))
-            {
-                template = template.Replace(":14582","");
-            }
-            return template;
-        }
-
-        public Uri GetSearchUri(string term)
-        {
-            var searchUri = genericUriResolver.GetSearchUri(term);
-            if (!searchUri.ToString().Contains("localhost"))
-            {
-                searchUri = new Uri(searchUri.ToString().Replace(":14582", ""));
-            }
-            return searchUri;
         }
     }
 }

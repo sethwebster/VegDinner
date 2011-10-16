@@ -28,10 +28,9 @@ namespace NerdDinner.Models
         [Display(Name = "Host's Name")]
         public string HostedBy { get; set; }
 
-        [Required(ErrorMessage = "Contact phone is required")]
-        [StringLength(20, ErrorMessage = "Contact phone may not be longer than 20 characters")]
-        [Display(Name = "Contact Phone")]
-        [UIHint("PhoneNumber")]
+        [Required(ErrorMessage = "Contact info is required")]
+        [StringLength(20, ErrorMessage = "Contact info may not be longer than 20 characters")]
+        [Display(Name = "Contact Info")]
         public string ContactPhone { get; set; }
 
         [Required(ErrorMessage = "Address is required")]
@@ -47,11 +46,6 @@ namespace NerdDinner.Models
 
         [HiddenInput(DisplayValue = false)]
         public double Longitude { get; set; }
-
-        [HiddenInput(DisplayValue = false)]
-        public int TimeZoneOffset { get; set; }
-
-
 
         [HiddenInput(DisplayValue = false)]
         public string HostedById { get; set; }

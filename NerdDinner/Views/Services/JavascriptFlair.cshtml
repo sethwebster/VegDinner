@@ -16,11 +16,11 @@ if (Model.Dinners.Count == 0) {
 
 	middleLines += "document.write('<h3>  Dinners Near You</h3><ul>');";
 		foreach (var item in Model.Dinners) {
-			middleLines += "document.write('<li><a target=\"_blank\" href=\"http://vegdinner.co/@item.DinnerID\">@item.Title.Truncate(20) %> with @item.HostedBy on @item.EventDate.ToShortDateString()</a></li>');";
+			middleLines += "document.write('<li><a target=\"_blank\" href=\"http://nrddnr.com/@item.DinnerID\">@item.Title.Truncate(20) %> with @item.HostedBy on @item.EventDate.ToShortDateString()</a></li>');";
 		}
 	middleLines += "document.write('</ul>');";
 }
-string lastLine = "document.write('<div id=\"nd-footer\">  More dinners and fun at <a target=\"_blank\" href=\"http://vegdinner.co\">http://vegdinner.co</a></div></div></div>');";
+string lastLine = "document.write('<div id=\"nd-footer\">  More dinners and fun at <a target=\"_blank\" href=\"http://nrddnr.com\">http://nrddnr.com</a></div></div></div>');";
 
 }
 

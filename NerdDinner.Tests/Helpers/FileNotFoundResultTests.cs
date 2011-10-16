@@ -1,14 +1,14 @@
 ﻿using System.Web;
 using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NerdDinner.Helpers;
+using NUnit.Framework;
 
 namespace NerdDinner.Tests.Helpers
 {
-    [TestClass]
+    [TestFixture]
     public class FileNotFoundResultTests
     {
-        [TestMethod]
+        [Test]
         public void ExecuteResult_Throws_HttpException_With_404_Status() {
             // Arrange
             ControllerContext context = new ControllerContext(); 

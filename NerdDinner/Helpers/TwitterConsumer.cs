@@ -173,10 +173,7 @@ namespace NerdDinner.Helpers
             if (forceNewLogin) {
                 redirectParameters["force_login"] = "true";
             }
-            if (callback.ToString().Contains("localhost") != true)
-            {
-                callback = new Uri(callback.ToString().Replace(":14582", ""));
-            }
+            
             var request = TwitterSignIn.PrepareRequestUserAuthorization(callback, null, redirectParameters);
             return TwitterSignIn.Channel.PrepareResponse(request);
         }

@@ -18,13 +18,8 @@ namespace NerdDinner.Models
         {
             List<Dinner> resultList = new List<Dinner>();
 
-            var results = db.Database.SqlQuery<Dinner>("SELECT * FROM Dinners WHERE EventDate >= {0} AND dbo.DistanceBetween({1}, {2}, Latitude, Longitude) < 1000", DateTime.Now, latitude, longitude).ToArray();
-            foreach (Dinner result in results)
-            {
-                resultList.Add(db.Dinners.Where(d => d.DinnerID == result.DinnerID).FirstOrDefault());
-            }
-
-            return resultList.AsQueryable<Dinner>();
+            var results = db.Database.SqlQuery<Dinner>("SELECT * FROM Dinners WHERE EventDate >= {0} AND dbo.DistanceBetween({1}, {2}, Latitude, Longitude) < 1000", DateTime.Now, latitude, longitude);
+            return results.AsQueryable<Dinner>();
         }
 
         public IQueryable<Dinner> FindUpcomingDinners()
@@ -37,14 +32,15 @@ namespace NerdDinner.Models
 
         public IQueryable<Dinner> FindDinnersByText(string q)
         {
-            return All.Where(d => d.Title.Contains(q)
+            return All
+                .Where(d => d.Title.Contains(q)
                             || d.Description.Contains(q)
                             || d.HostedBy.Contains(q));
         }
 
         public IQueryable<Dinner> All
         {
-            get { return db.Dinners; }
+            get { return db.Dinners.Include(r => r.RSVPs); }
         }
 
         public IQueryable<Dinner> AllIncluding(params Expression<Func<Dinner, object>>[] includeProperties)
@@ -59,7 +55,8 @@ namespace NerdDinner.Models
 
         public Dinner Find(int id)
         {
-            return db.Dinners.SingleOrDefault(d => d.DinnerID == id);
+            return All
+                .SingleOrDefault(d => d.DinnerID == id);
         }
 
         //

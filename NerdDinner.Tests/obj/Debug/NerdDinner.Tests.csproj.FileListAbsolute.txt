@@ -1,0 +1,54 @@
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\NerdDinner.Tests.dll.config
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\NerdDinner.Tests.dll
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\NerdDinner.Tests.pdb
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\DDay.iCal.dll
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\Moq.dll
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\NerdDinner.dll
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\nunit.framework.dll
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\OpenSearchToolkit.dll
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\PagedList.dll
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\System.Web.Mvc.dll
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\DotNetOpenAuth.dll
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\EntityFramework.dll
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\WebActivator.dll
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\Elmah.dll
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\MvcMiniProfiler.dll
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\MvcMiniProfiler.EntityFramework.dll
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\antlr.runtime.dll
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\NerdDinner.pdb
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\PagedList.xml
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\System.Web.Mvc.xml
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\DotNetOpenAuth.xml
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\EntityFramework.xml
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\MvcMiniProfiler.pdb
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\MvcMiniProfiler.xml
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\bin\Debug\MvcMiniProfiler.EntityFramework.pdb
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\obj\Debug\ResolveAssemblyReference.cache
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\obj\Debug\NerdDinner.Tests.dll
+E:\Users\Seth Webster\Desktop\092011\NerdDinner.Tests\obj\Debug\NerdDinner.Tests.pdb
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\NerdDinner.Tests.dll.config
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\NerdDinner.Tests.dll
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\NerdDinner.Tests.pdb
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\Moq.dll
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\NerdDinner.dll
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\nunit.framework.dll
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\PagedList.dll
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\System.Web.Mvc.dll
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\EntityFramework.dll
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\DotNetOpenAuth.dll
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\WebActivator.dll
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\Elmah.dll
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\MvcMiniProfiler.dll
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\MvcMiniProfiler.EntityFramework.dll
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\antlr.runtime.dll
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\NerdDinner.pdb
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\PagedList.xml
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\System.Web.Mvc.xml
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\EntityFramework.xml
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\DotNetOpenAuth.xml
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\MvcMiniProfiler.pdb
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\MvcMiniProfiler.xml
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\bin\Debug\MvcMiniProfiler.EntityFramework.pdb
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\obj\Debug\ResolveAssemblyReference.cache
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\obj\Debug\NerdDinner.Tests.dll
+E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner.Tests\obj\Debug\NerdDinner.Tests.pdb

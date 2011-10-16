@@ -5,22 +5,7 @@ NerdDinner._map = null;
 NerdDinner._points = [];
 NerdDinner._shapes = [];
 NerdDinner.ipInfoDbKey = '';
-
-NerdDinner.AddMapLoadedCallback = function (callback) {
-    if (!this._loadedCallbacks) {
-        this._loadedCallbacks = Array();
-    }
-    this._loadedCallbacks[this._loadedCallbacks.length] = callback;
-}
-
-NerdDinner.InvokeMapLoadedCallbacks = function () {
-    if (this._loadedCallbacks) {
-        for (var i = 0; i < this._loadedCallbacks.length; i++) {
-            var cb = this._loadedCallbacks[i];
-            cb(NerdDinner);
-        }
-    }
-}
+NerdDinner.BingMapsKey = '';
 
 NerdDinner.LoadMap = function (latitude, longitude, onMapLoaded) {
     NerdDinner._map = new VEMap(NerdDinner.MapDivId);
@@ -50,8 +35,17 @@ NerdDinner.ClearMap = function () {
     NerdDinner._shapes = [];
 }
 
-NerdDinner.LoadPin = function (LL, name, description) {
+NerdDinner.LoadPin = function (LL, name, description, draggable) {
+    if (LL.Latitude == 0 || LL.Longitude == 0) {
+        return;
+    }
+
     var shape = new VEShape(VEShapeType.Pushpin, LL);
+
+    if (draggable == true) {
+        shape.Draggable = true;
+        shape.onenddrag = NerdDinner.onEndDrag;
+    }
 
     //Make a nice Pushpin shape with a title and description
     shape.SetTitle("<span class=\"pinTitle\"> " + escape(name) + "</span>");
@@ -92,11 +86,8 @@ NerdDinner._callbackForLocation = function (layer, resultsArray, places, hasMore
         }
         var LL = new VELatLong(item.LatLong.Latitude,
                         item.LatLong.Longitude);
-        $.getJSON("http://api.geonames.org/timezoneJSON?lat=" + item.LatLong.Latitude + "&lng=" + item.LatLong.Longitude + "&username=vegdinner&style=full",
-        function (res) {
-            $("#TimeZoneOffset").val(res.gmtOffset);
-        });
-        NerdDinner.LoadPin(LL, item.Name, description);
+
+        NerdDinner.LoadPin(LL, item.Name, description, true);
     });
 
     //Make sure all pushpins are visible
@@ -142,7 +133,7 @@ NerdDinner._renderDinners = function (dinners) {
         var LL = new VELatLong(dinner.Latitude, dinner.Longitude, 0, null);
 
         // Add Pin to Map
-        NerdDinner.LoadPin(LL, _getDinnerLinkHTML(dinner), _getDinnerDescriptionHTML(dinner));
+        NerdDinner.LoadPin(LL, _getDinnerLinkHTML(dinner), _getDinnerDescriptionHTML(dinner), false);
 
         //Add a dinner to the <ul> dinnerList on the right
         $('#dinnerList').append($('<li/>')
@@ -193,46 +184,9 @@ NerdDinner._renderDinners = function (dinners) {
     }
 }
 
-NerdDinner.dragShape = null;
-NerdDinner.dragPixel = null;
-
-NerdDinner.EnableMapMouseClickCallback = function () {
-    NerdDinner._map.AttachEvent("onmousedown", NerdDinner.onMouseDown);
-    NerdDinner._map.AttachEvent("onmouseup", NerdDinner.onMouseUp);
-    NerdDinner._map.AttachEvent("onmousemove", NerdDinner.onMouseMove);
-}
-
-NerdDinner.onMouseDown = function (e) {
-    if (e.elementID != null) {
-        NerdDinner.dragShape = NerdDinner._map.GetShapeByID(e.elementID);
-        return true;
-    }
-}
-
-NerdDinner.onMouseUp = function (e) {
-    if (NerdDinner.dragShape != null) {
-        var x = e.mapX;
-        var y = e.mapY;
-        NerdDinner.dragPixel = new VEPixel(x, y);
-        var LatLong = NerdDinner._map.PixelToLatLong(NerdDinner.dragPixel);
-        $("#Latitude").val(LatLong.Latitude.toString());
-        $("#Longitude").val(LatLong.Longitude.toString());
-        NerdDinner.dragShape = null;
-
-        //OPTIONAL: If you want, go find the address under this pin...        
-        //NerdDinner._map.FindLocations(LatLong, NerdDinner.getLocationResults);
-    }
-}
-
-NerdDinner.onMouseMove = function (e) {
-    if (NerdDinner.dragShape != null) {
-        var x = e.mapX;
-        var y = e.mapY;
-        NerdDinner.dragPixel = new VEPixel(x, y);
-        var LatLong = NerdDinner._map.PixelToLatLong(NerdDinner.dragPixel);
-        NerdDinner.dragShape.SetPoints(LatLong);
-        return true;
-    }
+NerdDinner.onEndDrag = function (e) {
+    $("#Latitude").val(e.LatLong.Latitude.toString());
+    $("#Longitude").val(e.LatLong.Longitude.toString());
 }
 
 NerdDinner.getLocationResults = function (locations) {
@@ -253,18 +207,17 @@ NerdDinner.getCurrentLocationByIpAddress = function () {
     $.getJSON(requestUrl,
         function (data) {
             if (data.RegionName != '') {
-                $get('Location').value = data.regionName + ', ' + data.countryName;
+                $('#Location').val(data.regionName + ', ' + data.countryName);
             }
         });
 }
 
 NerdDinner.getCurrentLocationByLatLong = function (latitude, longitude) {
-    NerdDinner._map.FindLocations(new VELatLong(latitude, longitude), function (locations) {
-        if (locations) {
-            for (var i = 0; i < locations.length; i++) {
-                $get('Location').value += locations[i].Name;
-                break;
+    var requestUrl = 'http://dev.virtualearth.net/REST/v1/Locations/' + latitude + ',' + longitude + '?key=' + NerdDinner.BingMapsKey + '&jsonp=?';
+    $.getJSON(requestUrl,
+        function (result) {
+            if (result.resourceSets[0].estimatedTotal > 0) {
+                $('#Location').val(result.resourceSets[0].resources[0].address.formattedAddress)
             }
-        }
-    });
+        });
 }

@@ -14,7 +14,9 @@
     <AssemblyName>NerdDinner</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,31 +40,33 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\DDay.iCal.dll</HintPath>
     </Reference>
-    <Reference Include="Devtalk.EF.CodeFirst">
-      <HintPath>..\packages\EFCodeFirst.CreateTablesOnly.1.0.2\lib\Devtalk.EF.CodeFirst.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth, Version=3.4.7.11121, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="DotNetOpenAuth">
       <HintPath>..\packages\DotNetOpenAuth.3.4.7.11121\lib\DotNetOpenAuth.dll</HintPath>
     </Reference>
-    <Reference Include="Elmah, Version=1.1.11517.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\elmah.1.1\lib\Elmah.dll</HintPath>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2\lib\Elmah.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Glimpse.Core">
-      <HintPath>..\packages\Glimpse.0.83\lib\net40\Glimpse.Core.dll</HintPath>
+    <Reference Include="FiftyOne.Foundation">
+      <HintPath>..\packages\51Degrees.mobi.1.2.0.5\lib\NET40\FiftyOne.Foundation.dll</HintPath>
     </Reference>
-    <Reference Include="Glimpse.Mvc3">
-      <HintPath>..\packages\Glimpse.Mvc3.0.83\lib\net40\Glimpse.Mvc3.dll</HintPath>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="MoreLinq">
+      <HintPath>..\packages\morelinq.1.0\lib\net35\MoreLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcMiniProfiler">
+      <HintPath>..\packages\MiniProfiler.1.9\lib\net40\MvcMiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcMiniProfiler.EntityFramework">
+      <HintPath>..\packages\MiniProfiler.EF.1.9.1\lib\net40\MvcMiniProfiler.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="OpenSearchToolkit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OpenSearchToolkit.CustomUriResolver.1.2\lib\OpenSearchToolkit.dll</HintPath>
+      <HintPath>..\packages\OpenSearchToolkit.1.1\lib\OpenSearchToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="PagedList">
-      <HintPath>..\packages\PagedList.1.2.1.0\lib\40\PagedList.dll</HintPath>
+    <Reference Include="PagedList, Version=1.10.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.10\lib\net40\PagedList.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
@@ -73,7 +77,14 @@
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Web.MVC\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\System.Web.Providers.1.0\lib\System.Web.Providers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.WebPages" />
     <Reference Include="System.Web.Helpers" />
     <Reference Include="Microsoft.CSharp" />
@@ -96,11 +107,12 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="WebActivator">
-      <HintPath>..\packages\WebActivator.1.4.1\lib\net40\WebActivator.dll</HintPath>
+      <HintPath>..\packages\WebActivator.1.4.2\lib\net40\WebActivator.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\DontDropDbJustCreateTablesIfModelChangedStart.cs" />
+    <Compile Include="App_Start\MiniProfiler.cs" />
+    <Compile Include="App_Start\MobileViewEnginesBootstrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\DinnersController.cs" />
@@ -109,23 +121,17 @@
     <Compile Include="Controllers\RSVPController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Filters\PortNumberFilterProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CalendarHelpers.cs" />
     <Compile Include="Helpers\ControllerHelpers.cs" />
     <Compile Include="Helpers\CountryList.cs" />
-    <Compile Include="Helpers\CustomMobileViewEngine.cs" />
     <Compile Include="Helpers\FileNotFoundResult.cs" />
     <Compile Include="Helpers\HandleErrorWithELMAHAttribute.cs" />
     <Compile Include="Helpers\iCalResult.cs" />
     <Compile Include="Helpers\InMemoryTokenManager.cs" />
-    <Compile Include="Helpers\MobileCapableWebFormViewEngine.cs" />
+    <Compile Include="Helpers\MobileCapableRazorViewEngine.cs" />
     <Compile Include="Helpers\RSSResult.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Helpers\TwitterConsumer.cs" />
@@ -154,16 +160,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="apple-touch-icon.png" />
-    <Content Include="App_Readme\glimpse.mvc3.readme.txt" />
-    <Content Include="App_Readme\glimpse.readme.txt" />
+    <Content Include="App_Data\web_browsers_patch.xml" />
     <Content Include="Content\Flair.css" />
-    <Content Include="Content\images\ajax-loader.png" />
     <Content Include="Content\images\google.gif" />
-    <Content Include="Content\images\icon-search-black.png" />
-    <Content Include="Content\images\icons-18-black.png" />
-    <Content Include="Content\images\icons-18-white.png" />
-    <Content Include="Content\images\icons-36-black.png" />
-    <Content Include="Content\images\icons-36-white.png" />
     <Content Include="Content\images\infocard_23x16.png" />
     <Content Include="Content\images\myopenid.png" />
     <Content Include="Content\images\openid.gif" />
@@ -236,8 +235,8 @@
     <Content Include="Content\iui\toolbar.png" />
     <Content Include="Content\iui\toolButton.png" />
     <Content Include="Content\iui\whiteButton.png" />
-    <Content Include="Content\jquery.mobile-1.0a4.1.css" />
-    <Content Include="Content\jquery.mobile-1.0a4.1.min.css" />
+    <Content Include="Content\jquery.mobile-1.0b2.css" />
+    <Content Include="Content\jquery.mobile-1.0b2.min.css" />
     <Content Include="Content\loginpopup.css" />
     <Content Include="Content\Mobile\mobile-xhtml.css" />
     <Content Include="Content\nerd.jpg" />
@@ -324,46 +323,32 @@
     <Content Include="Content\theme\ui.slider.css" />
     <Content Include="Content\theme\ui.tabs.css" />
     <Content Include="Content\theme\ui.theme.css" />
-    <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\jquery-ui.css" />
-    <Content Include="lib\antlr.runtime.dll" />
-    <Content Include="lib\DDay.iCal-License.txt" />
-    <Content Include="lib\DDay.iCal.dll" />
     <Content Include="Logs\readme.txt" />
-    <Content Include="README.jQuery.vsdoc.txt" />
     <Content Include="Scripts\date.format.js" />
     <Content Include="Scripts\geo-polyfill.js" />
     <Content Include="Scripts\geo.js" />
     <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.2.js" />
     <Content Include="Scripts\jquery-1.6.2.min.js" />
-    <Content Include="Scripts\jquery-ui-1.8.14.js" />
-    <Content Include="Scripts\jquery-ui-1.8.14.min.js" />
-    <Content Include="Scripts\jquery-ui-timepicker.js" />
+    <Content Include="Scripts\jquery-ui-1.8.15.js" />
+    <Content Include="Scripts\jquery-ui-1.8.15.min.js" />
     <Content Include="Scripts\jquery.cookie.js" />
-    <Content Include="Scripts\jquery.mask.min.js" />
-    <Content Include="Scripts\jquery.mobile-1.0a4.1.js" />
-    <Content Include="Scripts\jquery.mobile-1.0a4.1.min.js" />
+    <Content Include="Scripts\jquery.mobile-1.0b2.js" />
+    <Content Include="Scripts\jquery.mobile-1.0b2.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Scripts\MSAjaxHistoryBundle.js" />
     <Content Include="Scripts\NerdDinner.js" />
-    <Content Include="Scripts\timepicker_plug\css\TimePickerAddOn.css" />
     <Content Include="Scripts\timepicker_plug\TimePickerAddOn.js" />
     <Content Include="Scripts\timepicker_plug\css\style.css" />
     <Content Include="Scripts\timepicker_plug\timepicker.js" />
     <Content Include="Scripts\yepnope.1.0.1-min.js" />
     <Content Include="Scripts\yepnope.js" />
     <Content Include="Services\OData.svc" />
-    <Content Include="Views\Dinners\Mobile\Details.aspx" />
-    <Content Include="Views\Dinners\Mobile\iPhone\Details.aspx" />
-    <Content Include="Views\Home\Mobile\Index.aspx" />
-    <Content Include="Views\Home\Mobile\iPhone\Index.aspx" />
-    <Content Include="Views\Shared\Mobile\iPhone\Results.aspx" />
-    <Content Include="Views\Shared\Mobile\Results.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -372,6 +357,7 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -390,6 +376,14 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_MINIPROFILER UPDATED Layout.cshtml" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Deployment.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Helpers.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Mvc.dll" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ConnectionStrings.config" />
@@ -421,8 +415,6 @@
     <Content Include="Views\Shared\EditorTemplates\CountryDropDown.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\LocationDetail.cshtml" />
-    <Content Include="Views\Shared\Mobile\iPhone\Site.Master" />
-    <Content Include="Views\Shared\Mobile\Site.Master" />
     <Content Include="Views\Shared\_LoginStatus.cshtml" />
     <Content Include="Views\Shared\_Masthead.cshtml" />
   </ItemGroup>
@@ -463,13 +455,9 @@
     <Content Include="Views\Shared\EditorTemplates\Color.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\Mobile\_MobileLayout.cshtml" />
-    <Content Include="Views\Home\Mobile\Index.cshtml" />
-    <Content Include="Views\Shared\Mobile\Results.cshtml" />
-    <Content Include="Views\Dinners\Mobile\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Dinners\DinnerPagination.cshtml" />
@@ -479,10 +467,26 @@
     <Content Include="Views\Account\_LogonOpenId.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Content Include="Views\Shared\_Layout.Mobile.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <Content Include="Views\Home\Index.Mobile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Dinners\Details.Mobile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Results.Mobile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\51Degrees.mobi.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\wurfl.xml.gz" />
+    <Content Include="Views\Shared\Lost.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="lib\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -499,11 +503,12 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50799</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50655</IISUrl>
+          <IISUrl>
+          </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -513,4 +518,5 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" />
 </Project>
