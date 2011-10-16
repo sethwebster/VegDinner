@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <meta content="Nerd, Dinner, Geek, Luncheon, Dweeb, Breakfast, Technology, Bar, Beer, Wonk"
+    <meta content="Vegan, Vegetarian, Meetup, Social, Dinner, Geek, Luncheon, Dweeb, Breakfast, Technology, Bar, Beer, Wonk"
         name="keywords" />
     <meta name="description" content="Host and promote your own Nerd Dinner free!" />
-    <link title="NerdDinner.com" rel="search" type="application/opensearchdescription+xml" href="@Url.Content("~/Services/OpenSearch.ashx")" />
+    <link title="VegDinner.co" rel="search" type="application/opensearchdescription+xml" href="@Url.Content("~/Services/OpenSearch.ashx")" />
     <link href="@Url.Content("~/Content/Production.css?v=2")" rel="stylesheet" type="text/css" media="screen" />
    
     <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.11/themes/humanity/jquery-ui.css" rel="stylesheet" type="text/css" />
@@ -36,9 +36,9 @@
     <script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script>
     <script src="http://cdn.uservoice.com/javascripts/widgets/tab.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Scripts/timepicker_plug/css/TimePickerAddOn.css")"/>
-    <link rel="alternate" type="application/rss+xml" title="NerdDinner.com - Upcoming Dinners" href="@Url.Content("~/Services/RSS")" />
-    <link rel="odata.service" title="NerdDinner.com OData Service" href="@Url.Content("~/Services/OData.svc")" />
-    <link rel="odata.feed" title="NerdDinner.com OData Service - Dinners" href="@Url.Content("~/Services/OData.svc/Dinners")" />
+    <link rel="alternate" type="application/rss+xml" title="VegDinner.co - Upcoming Dinners" href="@Url.Content("~/Services/RSS")" />
+    <link rel="odata.service" title="VegDinner.co OData Service" href="@Url.Content("~/Services/OData.svc")" />
+    <link rel="odata.feed" title="VegDinner.co OData Service - Dinners" href="@Url.Content("~/Services/OData.svc/Dinners")" />
     @RenderSection("HeadArea", required: false)
 
     @MvcMiniProfiler.MiniProfiler.RenderIncludes()
@@ -98,7 +98,7 @@
         <script type="text/javascript">
             UserVoice.Tab.show({
                 key: 'nerddinner',
-                host: 'feedback.nerddinner.com',
+                host: 'feedback.VegDinner.co',
                 forum: 'general',
                 alignment: 'right', /* 'left', 'right' */
                 background_color: '#A2CC3B',
