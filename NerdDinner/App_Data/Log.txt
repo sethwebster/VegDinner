@@ -88,3 +88,6 @@
 2011-10-16T06:46:15.0578514Z - 7400 - Debug - Disposing Redirection Module
 2011-10-16T06:46:15.0578514Z - 7400 - Debug - Disposing Redirection Module
 2011-10-16T06:46:15.0588515Z - 7400 - Debug - Disposing Redirection Module
+2011-10-16T06:55:08.1583430Z - 9792 - Debug - Getting 'fiftyOne/redirect' configuration from file 'E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner\App_Data\51Degrees.mobi.config'.
+2011-10-16T06:55:08.1643434Z - 9792 - Debug - Getting 'fiftyOne/wurfl' configuration from file 'E:\Users\Seth Webster\Documents\Visual Studio 2010\Projects\git\VegDinner\NerdDinner\App_Data\51Degrees.mobi.config'.
+2011-10-16T06:55:08.1803443Z - 9792 - Debug - Constructing MobileCapabilitiesProvider - Default
