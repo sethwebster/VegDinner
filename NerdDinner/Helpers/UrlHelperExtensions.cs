@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
+using NerdDinner.Services;
 
 namespace System.Web.Mvc
 {
@@ -11,12 +12,12 @@ namespace System.Web.Mvc
     {
         internal static Uri ActionFull(this UrlHelper urlHelper, string actionName)
         {
-            return new Uri(HttpContext.Current.Request.Url, urlHelper.Action(actionName));
+            return AppHarborUriHelper.ResolveUri(new Uri(HttpContext.Current.Request.Url, urlHelper.Action(actionName)));
         }
 
         internal static Uri ActionFull(this UrlHelper urlHelper, string actionName, string controllerName)
         {
-            return new Uri(HttpContext.Current.Request.Url, urlHelper.Action(actionName, controllerName));
+            return AppHarborUriHelper.ResolveUri(new Uri(HttpContext.Current.Request.Url, urlHelper.Action(actionName, controllerName)));
         }
 
         /// <summary>

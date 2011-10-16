@@ -18,14 +18,19 @@ namespace NerdDinner.Services
         public static Uri ResolveUri(string path)
         {
             var retUrl = new Uri(path);
+            return ResolveUri(retUrl);
+        }
 
-            // If we are not operating locally, remove the port # since 
-            if (retUrl.Host.ToLower() != "localhost")
+        public static Uri ResolveUri(Uri path)
+        {
+            Uri retUrl = path;
+            if (path.Host.ToLower() != "localhost")
             {
                 retUrl = new Uri(
                     retUrl.Scheme + "://" + retUrl.Host + retUrl.PathAndQuery
                );
             }
+
             return retUrl;
         }
     }
