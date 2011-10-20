@@ -23,7 +23,7 @@ namespace NerdDinner
         public bool IsAuthenticated
         {
             get { return true; }
-        }
+        }       
 
         public string Name
         {

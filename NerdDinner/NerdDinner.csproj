@@ -247,6 +247,7 @@
     <Content Include="Content\iui\whiteButton.png" />
     <Content Include="Content\jquery.mobile-1.0b2.css" />
     <Content Include="Content\jquery.mobile-1.0b2.min.css" />
+    <Content Include="Content\jquery.tagsinput.css" />
     <Content Include="Content\loginpopup.css" />
     <Content Include="Content\Mobile\mobile-xhtml.css" />
     <Content Include="Content\nerd.jpg" />
@@ -348,6 +349,8 @@
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.mobile-1.0b2.js" />
     <Content Include="Scripts\jquery.mobile-1.0b2.min.js" />
+    <Content Include="Scripts\jquery.tagsinput.js" />
+    <Content Include="Scripts\jquery.tagsinput.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Scripts\MSAjaxHistoryBundle.js" />

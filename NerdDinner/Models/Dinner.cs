@@ -52,6 +52,10 @@ namespace NerdDinner.Models
 
         public virtual ICollection<RSVP> RSVPs { get; set; }
 
+        [Required(ErrorMessage="Please select the types of cuisine which will be served")]
+        [Display(Name="Cuisine Types")]
+        public string CuisineTypes { get; set; }
+
         public bool IsHostedBy(string userName)
         {
             return String.Equals(HostedById ?? HostedBy, userName, StringComparison.Ordinal);
