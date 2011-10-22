@@ -41,8 +41,8 @@ namespace NerdDinner.Controllers
                 var item = new SyndicationItem(
                     title: d.Title,
                     content: contentString,
-                    itemAlternateLink: new Uri("http://nrddnr.com/" + d.DinnerID),
-                    id: "http://nrddnr.com/" + d.DinnerID,
+                    itemAlternateLink: new Uri("http://vegdinner.co/" + d.DinnerID),
+                    id: "http://vegdinner.co/" + d.DinnerID,
                     lastUpdatedTime: d.EventDate.ToUniversalTime()
                     );
                 item.PublishDate = d.EventDate.ToUniversalTime();
