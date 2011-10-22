@@ -1,1 +1,4 @@
-﻿@Html.TextBox("", ViewData.TemplateInfo.FormattedModelValue, new { @class = "text-box single-line", type = "date" })
+﻿@{
+    var vl = ((DateTime)ViewData.TemplateInfo.FormattedModelValue).ToShortDateString();
+}
+@Html.TextBox("", vl, new { @class = "text-box single-line", type = "date" })

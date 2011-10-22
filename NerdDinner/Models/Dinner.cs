@@ -17,8 +17,40 @@ namespace NerdDinner.Models
 
         [Required(ErrorMessage = "Event Date is required")]
         [Display(Name = "Event Date")]
+        [HiddenInput(DisplayValue = false)]
         public DateTime EventDate { get; set; }
 
+        [Required(ErrorMessage = "The date is required")]
+        [NotMapped]
+        [UIHint("Date")]
+        [Display(Name = "Date of your event")]
+        public DateTime TheDate
+        {
+            get
+            {
+                return EventDate.Date;
+            }
+            set
+            {
+                EventDate = DateTime.Parse(value.Date.ToShortDateString() + " " + EventDate.ToShortTimeString());
+            }
+        }
+
+        [Required(ErrorMessage = "The time is required")]
+        [NotMapped]
+        [Display(Name = "What time should guests arrive?")]
+        [UIHint("Time")]
+        public TimeSpan TheTime
+        {
+            get
+            {
+                return EventDate.TimeOfDay;
+            }
+            set
+            {
+                EventDate = DateTime.Parse(EventDate.ToShortDateString() + " " + value.Hours + ":" + value.Minutes);
+            }
+        }
         [Required(ErrorMessage = "Description is required")]
         [StringLength(256, ErrorMessage = "Description may not be longer than 256 characters")]
         [DataType(DataType.MultilineText)]
@@ -52,8 +84,8 @@ namespace NerdDinner.Models
 
         public virtual ICollection<RSVP> RSVPs { get; set; }
 
-        [Required(ErrorMessage="Please select the types of cuisine which will be served")]
-        [Display(Name="Cuisine Types")]
+        [Required(ErrorMessage = "Please select the types of cuisine which will be served")]
+        [Display(Name = "Cuisine Types")]
         public string CuisineTypes { get; set; }
 
         public bool IsHostedBy(string userName)
